@@ -7,40 +7,33 @@
  * @kind function
  *
  * @description
- * Creates an injector object that can be used for retrieving services as well as for
- * dependency injection (see {@link guide/di dependency injection}).
+ * 创建一个注入器，用于获取services和依赖注入
  *
- * @param {Array.<string|Function>} modules A list of module functions or their aliases. See
- *     {@link angular.module}. The `ng` module must be explicitly added.
- * @param {boolean=} [strictDi=false] Whether the injector should be in strict mode, which
- *     disallows argument name annotation inference.
- * @returns {injector} Injector object. See {@link auto.$injector $injector}.
+ * @param {Array.<string|Function>} modules 一组模块函数或者他们的别名。必须显示地添加ng模块。
+ * @param {boolean=} [strictDi=false] 注入器是否应该是严格的模式，严格模式禁止用函数参数的方式来实现依赖注入（function($scope) {}）。
+ * @returns {injector} 返回注入器对象。
  *
  * @example
  * Typical usage
  * ```js
- *   // create an injector
+ *   // 创建一个注入器
  *   var $injector = angular.injector(['ng']);
  *
- *   // use the injector to kick off your application
- *   // use the type inference to auto inject arguments, or use implicit injection
+ *   // 使用注入器来驱动你的应用
+ *   // 使用类型引用来自动地注入参数（['$scope', function($scope) {}]），或者使用隐式注入（function($scope) {}）
  *   $injector.invoke(function($rootScope, $compile, $document) {
  *     $compile($document)($rootScope);
  *     $rootScope.$digest();
  *   });
  * ```
  *
- * Sometimes you want to get access to the injector of a currently running Angular app
- * from outside Angular. Perhaps, you want to inject and compile some markup after the
- * application has been bootstrapped. You can do this using the extra `injector()` added
- * to JQuery/jqLite elements. See {@link angular.element}.
+ * 有时你想从外界的angular获取当前运行的angular应用的注入器。或许你想在应用引导完成之后注入和编译一些标记（标签）。
+ * 你可以用JQuery/jqLite的额外方法injector()来实现这个功能。
  *
- * *This is fairly rare but could be the case if a third party library is injecting the
- * markup.*
+ * 很少会这样干，但是一些第三方的库可能会注入标记（标签）
  *
- * In the following example a new block of HTML containing a `ng-controller`
- * directive is added to the end of the document body by JQuery. We then compile and link
- * it into the current AngularJS scope.
+ * 在下面的这个例子中，一段包含ng-controller指令的HTML代码被jQuery添加到文档的末尾。
+ * 接下来我们将它编译连接到当前的AngularJS scope。
  *
  * ```js
  * var $div = $('<div ng-controller="MyCtrl">{{content.label}}</div>');
@@ -59,11 +52,11 @@
  * @name auto
  * @description
  *
- * Implicit module which gets automatically added to each {@link auto.$injector $injector}.
+ * 一个隐式的模块，会被自动添加到每一个注入器。
  */
 
 var FN_ARGS = /^function\s*[^\(]*\(\s*([^\)]*)\)/m;      // 匹配函数中的参数
-var FN_ARG_SPLIT = /,/;
+var FN_ARG_SPLIT = /,/;                                  // 用于分离用逗号隔开的一对参数
 var FN_ARG = /^\s*(_?)(\S+?)\1\s*$/;
 var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg; // 匹配代码注释
 var $injectorMinErr = minErr('$injector');
@@ -73,8 +66,7 @@ var $injectorMinErr = minErr('$injector');
  * 比如anonFn(function test(a, b, c) {})，会被转换成字符串'function(a, b, c)'
  */
 function anonFn(fn) {
-    // For anonymous functions, showing at the very least the function signature can help in
-    // debugging.
+    // 用于匿名函数，显示出来的函数特征至少可以帮助debug
     var fnText = fn.toString().replace(STRIP_COMMENTS, ''),
         args = fnText.match(FN_ARGS);
     if (args) {
@@ -146,11 +138,10 @@ function annotate(fn, strictDi, name) {
  *
  * @description
  *
- * `$injector` is used to retrieve object instances as defined by
- * {@link auto.$provide provider}, instantiate types, invoke methods,
- * and load modules.
+ * $injector用于获取对象实例，这些对象实例用provider、instantiate types、
+ * invoke methods和load modules的方式定义出来。
  *
- * The following always holds true:
+ * 下面的例子总是true：
  *
  * ```js
  *   var $injector = angular.injector();
@@ -166,7 +157,7 @@ function annotate(fn, strictDi, name) {
  * following are all valid ways of annotating function with injection arguments and are equivalent.
  *
  * ```js
- *   // inferred (only works if code not minified/obfuscated)
+ *   // 隐式注入（仅在代码没有被压缩或者混淆的前提下有效）
  *   $injector.invoke(function(serviceA){});
  *
  *   // annotated
