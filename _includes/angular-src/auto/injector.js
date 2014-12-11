@@ -169,19 +169,18 @@ function annotate(fn, strictDi, name) {
  *   $injector.invoke(['serviceA', function(serviceA){}]);
  * ```
  *
- * ## Inference
+ * ## 结论
  *
- * In JavaScript calling `toString()` on a function returns the function definition. The definition
- * can then be parsed and the function arguments can be extracted. This method of discovering
- * annotations is disallowed when the injector is in strict mode.
- * *NOTE:* This does not work with minification, and obfuscation tools since these tools change the
- * argument names.
+ * 在JavaScript调用一个函数的toString()方法会返回这个函数的定义。
+ * 可以从返回的定义（字符串）中解析出函数的参数。这种找到注解的方式
+ * 在严格模式下面是禁止的。
+ * 注意：压缩和使用混淆的时候，这种方式就不会奏效了，因为会改变参数的名字。
  *
  * ## `$inject` Annotation
- * By adding an `$inject` property onto a function the injection parameters can be specified.
+ * 通过设置$inject属性到函数上面，注入的参数可以用这个属性来指定。
  *
  * ## Inline
- * As an array of injection names, where the last item in the array is the function to call.
+ * 注入参数的名称数组的形式，最后一个元素是将被调用的函数。
  */
 
 /**
@@ -189,11 +188,11 @@ function annotate(fn, strictDi, name) {
  * @name $injector#get
  *
  * @description
- * Return an instance of the service.
+ * 返回service的实例
  *
- * @param {string} name The name of the instance to retrieve.
+ * @param {string} name 要获取的实例名称。
  * @param {string} caller An optional string to provide the origin of the function call for error messages.
- * @return {*} The instance.
+ * @return {*} 返回最后的实例。
  */
 
 /**
@@ -201,14 +200,12 @@ function annotate(fn, strictDi, name) {
  * @name $injector#invoke
  *
  * @description
- * Invoke the method and supply the method arguments from the `$injector`.
+ * 使用$injector中的参数来调用方法。
  *
- * @param {!Function} fn The function to invoke. Function parameters are injected according to the
- *   {@link guide/di $inject Annotation} rules.
- * @param {Object=} self The `this` for the invoked method.
- * @param {Object=} locals Optional object. If preset then any argument names are read from this
- *                         object first, before the `$injector` is consulted.
- * @returns {*} the value returned by the invoked `fn` function.
+ * @param {!Function} fn 被调用的方法。 函数的参数根据注解规则来注入。
+ * @param {Object=} self 被调用函数中的this变量。
+ * @param {Object=} locals 可选。如果设置了，那么要注入的参数首先根据参数名到这里面取值，而不是去$injector里面获取。
+ * @returns {*} 返回被调用函数的返回值。
  */
 
 /**
@@ -216,10 +213,10 @@ function annotate(fn, strictDi, name) {
  * @name $injector#has
  *
  * @description
- * Allows the user to query if the particular service exists.
+ * 允许用户查询指定的service是否存在。
  *
- * @param {string} name Name of the service to query.
- * @returns {boolean} `true` if injector has given service.
+ * @param {string} name 用于查询的service名字。
+ * @returns {boolean} 如果存在，返回true。
  */
 
 /**
