@@ -1,0 +1,44 @@
+---
+layout: post
+title: angular源码理解
+---
+<h1>angular源码理解</h1>
+<p>注：代码太长，建议将代码下载至本地，然后用自己喜欢的编辑器查看。</p>
+
+<h2>
+    <a class="fold-unfold" href="javascript:;">loader.js</a>
+    [<a class="download" href="javascript:;">下载</a>]
+</h2>
+<div style="display:none">
+{% highlight js %}
+{% include angular-src/loader.js %}
+{% endhighlight %}
+</div>
+
+<h2>
+    <a class="fold-unfold" href="javascript:;">auto/injector.js</a>
+    [<a class="download" href="javascript:;">下载</a>]
+</h2>
+<div style="display:none">
+{% highlight js %}
+{% include angular-src/auto/injector.js %}
+{% endhighlight %}
+</div>
+
+<script>
+$(function() {
+    $('.fold-unfold').on('click', function() {
+        var $content = $(this).parent().next();
+        if ($content.is(':visible')) {
+            $content.hide();
+        } else {
+            $content.show();
+        }
+    });
+    $('.download').on('click', function() {
+        var $content = $(this).parent().next();
+        var newWindow = window.open('about:blank');
+        newWindow.document.write('<pre>' + $content[0].innerText + '</pre>');
+    });
+});
+</script>
