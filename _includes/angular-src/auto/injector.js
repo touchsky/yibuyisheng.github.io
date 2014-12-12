@@ -326,14 +326,11 @@ function annotate(fn, strictDi, name) {
  * 这些service factory是一个service provider依次创建的。
  * 这些service providers是构造函数，在被实例化的时候必须包含一个叫做$get的属性，这个$get属性保存了service factory函数。
  *
- * When you request a service, the {@link auto.$injector $injector} is responsible for finding the
- * correct **service provider**, instantiating it and then calling its `$get` **service factory**
- * function to get the instance of the **service**.
+ * 当你请求一个service，$injector有负责找到正确的service provider，实例化这个service provider，然后
+ * 调用$get service factory函数获取这个service的实例。
  *
- * Often services have no configuration options and there is no need to add methods to the service
- * provider.  The provider will be no more than a constructor function with a `$get` property. For
- * these cases the {@link auto.$provide $provide} service has additional helper methods to register
- * services without specifying a provider.
+ * 一般service没有配置选项，也没有必要给service factory添加方法。
+ * provider仅仅是一个有$get属性的构造函数，由此，$provide service有附加的辅助方法来注册service而不指定provider。
  *
  * * {@link auto.$provide#provider provider(provider)} - registers a **service provider** with the
  *     {@link auto.$injector $injector}
