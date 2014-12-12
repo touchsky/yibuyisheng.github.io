@@ -353,36 +353,24 @@ function annotate(fn, strictDi, name) {
  * @name $provide#provider
  * @description
  *
- * Register a **provider function** with the {@link auto.$injector $injector}. Provider functions
- * are constructor functions, whose instances are responsible for "providing" a factory for a
- * service.
+ * 利用$injector注册一个provider function。provider function是构造函数，这个构造函数的实例负责构建某一个service。
  *
- * Service provider names start with the name of the service they provide followed by `Provider`.
- * For example, the {@link ng.$log $log} service has a provider called
- * {@link ng.$logProvider $logProvider}.
+ * service provider的名字以它将要构造的service名字加上一个后缀Provider命名（例如$log对应$logProvider）。
  *
- * Service provider objects can have additional methods which allow configuration of the provider
- * and its service. Importantly, you can configure what kind of service is created by the `$get`
- * method, or how that service will act. For example, the {@link ng.$logProvider $logProvider} has a
- * method {@link ng.$logProvider#debugEnabled debugEnabled}
- * which lets you specify whether the {@link ng.$log $log} service will log debug messages to the
- * console or not.
+ * service provider对象可以包含额外的方法，用于配置这个provider和它的service。重要的是，你能够配置通过$get方法创建何种的service，
+ * 或者service将会如何实现功能。例如，$logProvider有一个方法debugEnabled()，这个方法让你指定service是否向控制台输出debug信息。
  *
- * @param {string} name The name of the instance. NOTE: the provider will be available under `name +
-                        'Provider'` key.
- * @param {(Object|function())} provider If the provider is:
+ * @param {string} name 实例的名字。注意：provider的名字将会是[name + 'Provider']的形式。
+ * @param {(Object|function())} provider 如果provider是:
  *
- *   - `Object`: then it should have a `$get` method. The `$get` method will be invoked using
- *     {@link auto.$injector#invoke $injector.invoke()} when an instance needs to be created.
- *   - `Constructor`: a new instance of the provider will be created using
- *     {@link auto.$injector#instantiate $injector.instantiate()}, then treated as `object`.
+ *   - 对象: 这个对象必须具备一个$get方法。当需要创建一个实例的时候，这个$get方法就会被$injector.invoke()调用。
+ *   - 构造函数: 将会通过$injector.instantiate()创建一个实例，接下来就被当成一个对象来处理了。
  *
- * @returns {Object} registered provider instance
+ * @returns {Object} 注册好的provider实例
 
- * @example
+ * @例子
  *
- * The following example shows how to create a simple event tracking service and register it using
- * {@link auto.$provide#provider $provide.provider()}.
+ * 下面的例子展示了如何创建一个简单的事件追踪service，然后使用$provider.provider()注册。
  *
  * ```js
  *  // Define the eventTracker provider
@@ -449,7 +437,7 @@ function annotate(fn, strictDi, name) {
  * @name $provide#factory
  * @description
  *
- * Register a **service factory**, which will be called to return the service instance.
+ * 注册一个service factory，这个service factory将会被调用返回响应的service实例。
  * This is short for registering a service where its provider consists of only a `$get` property,
  * which is the given service factory function.
  * You should use {@link auto.$provide#factory $provide.factory(getFn)} if you do not need to
@@ -585,12 +573,11 @@ function annotate(fn, strictDi, name) {
  * @name $provide#decorator
  * @description
  *
- * Register a **service decorator** with the {@link auto.$injector $injector}. A service decorator
- * intercepts the creation of a service, allowing it to override or modify the behaviour of the
- * service. The object returned by the decorator may be the original service, or a new service
- * object which replaces or wraps and delegates to the original service.
+ * 运用$injector注册一个service decorator。
+ * 一个service decorator监听一个service的创建，允许覆盖或者修改service的功能。这个decorator返回的对象可能是原始的service，
+ * 或者一个新的service对象，这个对象代替或者包装和代理原始的service。
  *
- * @param {string} name The name of the service to decorate.
+ * @param {string} name 要修饰的service。
  * @param {function()} decorator This function will be invoked when the service needs to be
  *    instantiated and should return the decorated service instance. The function is called using
  *    the {@link auto.$injector#invoke injector.invoke} method and is therefore fully injectable.
