@@ -238,16 +238,13 @@ function annotate(fn, strictDi, name) {
  * @name $injector#annotate
  *
  * @description
- * Returns an array of service names which the function is requesting for injection. This API is
- * used by the injector to determine which services need to be injected into the function when the
- * function is invoked. There are three ways in which the function can be annotated with the needed
- * dependencies.
+ * 返回一组service名字，。。。（Returns an array of service names which the function is requesting for injection.）
+ * 当函数被调用的时候，注入器使用这个API来决定注入哪些service到这个函数。
+ * 有三种方式可以实现这个函数的依赖注解。
  *
- * # Argument names
+ * # 函数参数名字
  *
- * The simplest form is to extract the dependencies from the arguments of the function. This is done
- * by converting the function into a string using `toString()` method and extracting the argument
- * names.
+ * 最简单的形式是从函数的参数中取出依赖。这种方式是通过将函数用toString()方法转换成字符串，然后取出参数名字来实现的。
  * ```js
  *   // Given
  *   function MyController($scope, $route) {
@@ -258,15 +255,13 @@ function annotate(fn, strictDi, name) {
  *   expect(injector.annotate(MyController)).toEqual(['$scope', '$route']);
  * ```
  *
- * You can disallow this method by using strict injection mode.
+ * 你可以通过使用严格的注入模式来禁止这种方式。
  *
- * This method does not work with code minification / obfuscation. For this reason the following
- * annotation strategies are supported.
+ * 这种方式在代码压缩、混淆的时候无效。正视由于这个原因，下面的注解策略也被支持。
  *
- * # The `$inject` property
+ * # $inject属性
  *
- * If a function has an `$inject` property and its value is an array of strings, then the strings
- * represent names of services to be injected into the function.
+ * 如果函数有$inject属性，并且它的值是一个字符串数组，这串字符代表要被注入到函数的service的名字。
  * ```js
  *   // Given
  *   var MyController = function(obfuscatedScope, obfuscatedRoute) {
@@ -279,7 +274,7 @@ function annotate(fn, strictDi, name) {
  *   expect(injector.annotate(MyController)).toEqual(['$scope', '$route']);
  * ```
  *
- * # The array notation
+ * # 数组标记
  *
  * It is often desirable to inline Injected functions and that's when setting the `$inject` property
  * is very inconvenient. In these situations using the array notation to specify the dependencies in
@@ -325,14 +320,11 @@ function annotate(fn, strictDi, name) {
  *
  * @description
  *
- * The {@link auto.$provide $provide} service has a number of methods for registering components
- * with the {@link auto.$injector $injector}. Many of these functions are also exposed on
- * {@link angular.Module}.
+ * $provide service有一系列的方法运用$injector来注册组件。其中许多方法也暴露在angular.Module上面。
  *
- * An Angular **service** is a singleton object created by a **service factory**.  These **service
- * factories** are functions which, in turn, are created by a **service provider**.
- * The **service providers** are constructor functions. When instantiated they must contain a
- * property called `$get`, which holds the **service factory** function.
+ * 一个Angular的service是一个service factory创建的单例对象。
+ * 这些service factory是一个service provider依次创建的。
+ * 这些service providers是构造函数，在被实例化的时候必须包含一个叫做$get的属性，这个$get属性保存了service factory函数。
  *
  * When you request a service, the {@link auto.$injector $injector} is responsible for finding the
  * correct **service provider**, instantiating it and then calling its `$get` **service factory**
