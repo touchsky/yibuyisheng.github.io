@@ -10,17 +10,16 @@
  * The typical use of scope is to watch the expressions, which most of the time return the same
  * value as last time so we optimize the operation.
  *
- * Closures construction is expensive in terms of speed as well as memory:
- *   - No closures, instead use prototypical inheritance for API
- *   - Internal state needs to be stored on scope directly, which means that private state is
- *     exposed as $$____ properties
+ * 创建闭包在速度和内存方面而言是昂贵的：
+ *   - 不用闭包，而是使用原型继承来实现API
+ *   - 内部的状态需要直接地存放在scope上，同时也意味着私有的状态通过$$____形式的属性被暴露出去了。
  *
- * Loop operations are optimized by using while(count--) { ... }
+ * 循环操作使用while(count--) { ... }来优化
  *   - this means that in order to keep the same order of execution as addition we have to add
  *     items to the array at the beginning (unshift) instead of at the end (push)
  *
- * Child scopes are created and removed often
- *   - Using an array would be slow since inserts in middle are expensive so we use linked list
+ * 会经常创建和修改子作用域
+ *   - 由于会在中间插入元素，因此使用数组会很慢，所以我们使用链表。
  *
  * There are few watches then a lot of observers. This is why you don't want the observer to be
  * implemented in the same way as watch. Watch requires return of initialization function which
