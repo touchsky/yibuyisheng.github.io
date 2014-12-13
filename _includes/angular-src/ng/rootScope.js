@@ -3,8 +3,10 @@
 /**
  * DESIGN NOTES
  *
+ * 在设计上，scope在速度和内存消耗方面享有极高的优先权。
  * The design decisions behind the scope are heavily favored for speed and memory consumption.
  *
+ * scope的典型应用是监听表达式
  * The typical use of scope is to watch the expressions, which most of the time return the same
  * value as last time so we optimize the operation.
  *

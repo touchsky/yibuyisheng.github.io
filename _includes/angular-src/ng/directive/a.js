@@ -6,11 +6,9 @@
  * @restrict E
  *
  * @description
- * Modifies the default behavior of the html A tag so that the default action is prevented when
- * the href attribute is empty.
+ * 修改A标签，当href为空的时候将会阻止默认行为。
  *
- * This change permits the easy creation of action links with the `ngClick` directive
- * without changing the location or causing page reloads, e.g.:
+ * 这个改变允许使用ngClick指令简单地添加点击回调函数，而不会导致页面跳转或者重新加载，例如：
  * `<a href="" ng-click="list.addItem()">Add Item</a>`
  */
 var htmlAnchorDirective = valueFn({
