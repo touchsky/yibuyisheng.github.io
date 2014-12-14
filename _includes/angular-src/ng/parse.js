@@ -2,7 +2,7 @@
 
 var $parseMinErr = minErr('$parse');
 
-// Sandboxing Angular Expressions
+// Angular表达式沙盒
 // ------------------------------
 // Angular expressions are generally considered safe because these expressions only have direct
 // access to `$scope` and locals. However, one can obtain the ability to execute arbitrary JS code by
