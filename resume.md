@@ -18,49 +18,33 @@ Mail: yibuyisheng@163.com
 
 https://github.com/yibuyisheng/
 
-关注前端技术动态。
-
-重视技术基础，喜欢尝试新技术。
+关注前端技术动态，喜欢尝试新技术；重视基础知识。
 
 ## 能力描述
 
-精通 js 基础语法。
+熟悉 JavaScript 基础语法。
 
-熟悉 css 定位、盒模型、浮动、弹性盒子等。
+熟悉 CSS 2.1 标准。
 
 熟悉 nodejs，使用过常见的基于 nodejs 的开发部署工具：gulp、bower、webpack 等。
 
-熟悉 Java，用 scala、python 做过后端开发，了解 PHP ，做过 Android 开发。
+在2014年2月之前主要从事后端开发，熟悉 Linux 以及基于 Linux 的一些常规工具的使用。
 
-熟悉 github 使用。
+熟悉 git 使用。
 
-熟悉 Linux 系统，无障碍使用 Linux 开发、部署、维护。
+有一定的代码洁癖。
 
-追求规范、清晰、高效的代码去实现需求。
+## 框架与库
+
+ 学习过 AngularJS 的主要源码，知道 AngularJS 的基本原理。
+ 
+ React 中文社区组织者之一，主要翻译了 React 相关文档。同时尝试实现了基本的单向数据流的 DOM 绑定，详情请移步[此处](https://github.com/yibuyisheng/web-ui/blob/master/static/js/ui/render.js)。
 
 ## 成就
 
-seajs＋jquery 开发了[趣味组](http://www.quweizu.com)前端。
-
-参与看处方后端 scala 开发，使用 redis＋mysql＋scala 做了“qq空间求助”项目，应对“可能的大量访问”。
-
-为某路由器公司的前端开发提供解决方案和技术支持。
-
-加入一个外包公司：
-
-  * 为宝钢交易中心开发了多款 Hybrid 应用，页面上使用 angular 框架，其中一款聊天应用了客户端缓存，利用事件机制来在合适的时机更新数据并通知界面展示，类似于 qq 的聊天应用。
-    搭建议价平台，采用 socketio，能应对短时间内用户数量爆发性增长（实际生产测试过）。
-  * 为多个开源项目贡献过源码，修正了 bug 、提升了性能： [riot](https://github.com/muut/riotjs/commits?author=yibuyisheng) 、 [node-fs-extra](https://github.com/jprichardson/node-fs-extra/commits?author=yibuyisheng) 等。
+为多个开源项目贡献过源码，修正了 bug 、提升了性能： [riot](https://github.com/muut/riotjs/commits?author=yibuyisheng) 、 [node-fs-extra](https://github.com/jprichardson/node-fs-extra/commits?author=yibuyisheng) 等。
 
 组织翻译了 [reactjs 主要文档](https://github.com/reactjs-cn/react-docs)。
-
-## 最喜欢的开发工具
-
-sublime text 3
-
-## 最喜欢的 Linux 操作系统发行版
-
-Debian
 
 ## 自我评价
 
